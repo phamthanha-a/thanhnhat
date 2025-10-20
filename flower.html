@@ -121,37 +121,34 @@
     box-shadow: 0 0 30px rgba(0,0,0,0.3);
     background: rgba(255,255,255,0.2);
     opacity: 0;
-    transition: opacity 1.2s ease, transform 1s ease;
+    transition: opacity 1.2s ease;
     z-index: 5;
   }
 
-  /* Dịch hình bên trái vào trong một chút */
   #gift-image-left {
-    left: 10%; /* 👈 dịch qua phải để cân hơn */
+    left: 5%;
   }
-
-  /* Hình bên phải giữ nguyên */
   #gift-image-right {
     right: 5%;
   }
 
-  /* Khi hiển thị (qua JS) thì hiện dần và trượt nhẹ */
+  /* Khi hiển thị (qua JS) thì hiện dần */
   #gift-image-left.show,
   #gift-image-right.show {
     display: block;
     opacity: 1;
   }
-
-  #gift-image-left.show {
-    transform: translate(20px, -50%); /* 👈 trượt nhẹ qua phải */
-  }
-
-  #gift-image-right.show {
-    transform: translate(-20px, -50%); /* 👈 trượt nhẹ qua trái */
-  }
 </style>
 
 <script>
+  // Hiển thị ảnh hai bên sau hiệu ứng chính
+  document.addEventListener("DOMContentLoaded", () => {
+    setTimeout(() => {
+      document.getElementById("gift-image-left").classList.add("show");
+      document.getElementById("gift-image-right").classList.add("show");
+    }, 2000); // 2 giây sau khi vào trang
+  });
+</script>
   // Hiển thị ảnh hai bên sau hiệu ứng chính
   document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => {
