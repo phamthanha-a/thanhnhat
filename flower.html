@@ -100,20 +100,56 @@
 
     <!-- Ảnh bất ngờ bên trái -->
 <!-- Ảnh bất ngờ bên trái -->
-<img id="gift-image-left" src="assets/anh1.jpg" alt="Ảnh bất ngờ 1"
-     style="display:none; position:absolute; top:50%; left:5%;
-            transform:translateY(-50%);
-            max-width:40%; height:auto;
-            object-fit:contain; border-radius:20px;
-            box-shadow:0 0 25px rgba(0,0,0,0.25);
-            background-color:rgba(255,255,255,0.3);">
-
+<img id="gift-image-left" src="assets/anh1.jpg" alt="Ảnh bất ngờ 1">
 
 <!-- Ảnh bất ngờ bên phải -->
-<img id="gift-image-right" 
-     src="assets/anh2.jpg" 
-     alt="Ảnh bất ngờ 2" 
-     style="display: none; max-width: 45%; height: auto; object-fit: contain; border-radius: 12px;">
+<img id="gift-image-right" src="assets/anh2.jpg" alt="Ảnh bất ngờ 2">
+
+<style>
+  /* Ảnh quà tặng hai bên */
+  #gift-image-left,
+  #gift-image-right {
+    display: none;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: auto !important;
+    height: auto !important;
+    max-width: 40vw !important;   /* vừa khung, không tràn */
+    max-height: 80vh !important;  /* không vượt chiều cao màn hình */
+    object-fit: contain !important; /* ✨ hiển thị toàn bộ ảnh, không crop */
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(0,0,0,0.3);
+    background: rgba(255,255,255,0.2);
+    opacity: 0;
+    transition: opacity 1.2s ease;
+    z-index: 5;
+  }
+
+  #gift-image-left {
+    left: 5%;
+  }
+  #gift-image-right {
+    right: 5%;
+  }
+
+  /* Khi hiển thị (qua JS) thì hiện dần */
+  #gift-image-left.show,
+  #gift-image-right.show {
+    display: block;
+    opacity: 1;
+  }
+</style>
+
+<script>
+  // Hiển thị ảnh hai bên sau hiệu ứng chính
+  document.addEventListener("DOMContentLoaded", () => {
+    setTimeout(() => {
+      document.getElementById("gift-image-left").classList.add("show");
+      document.getElementById("gift-image-right").classList.add("show");
+    }, 2000); // 2 giây sau khi vào trang
+  });
+</script>
 
 
     <div class="flowers">
